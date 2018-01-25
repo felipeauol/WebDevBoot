@@ -16,7 +16,7 @@
     Takes a string argument and returns the element with a matching ID
     IDs are unique in HTML
 
-    `document.getElementByID("highlighted")`
+    document.getElementByID("highlighted")
 
 _document.getElementsByClassName_:
     Takes a string argument and returns elements with a matching class in the form of a `nodeList`
@@ -27,15 +27,15 @@ _document.getElementsByClassName_:
  _document.getElementsByTagName_:
     Returns elements with matching tag
 
-    `document.getElementByTagName("h1")`
+    document.getElementByTagName("h1")
 
  _document.querySelector_: 
     Takes a css-like selector 
     Returns the *first* element with matching selector
 
-    `document.querySelector("#highlighted")`
-    `document.querySelector(".option")`
-    `document.querySelector("li.option")`
+    document.querySelector("#highlighted")
+    document.querySelector(".option")
+    document.querySelector("li.option")
 
  _document.querySelectorAll_:
     Same as previous but returns *all* matching elements
