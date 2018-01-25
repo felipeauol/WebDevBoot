@@ -1,0 +1,30 @@
+body {
+    width: 60%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 15px solid lightslategray;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1,p {
+    margin: 2%;
+    color: darkslategray;
+}
+
+p.quote{
+    border-left: 5px solid gray;
+    padding-left: 3px;
+}
+
+p.date{
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: lightskyblue;
+    font-size: 15px;
+}
+
+hr {
+    width: 95%;
+    
+}

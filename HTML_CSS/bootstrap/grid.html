@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grid Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style type="text/css">
+      .pink {
+          background: pink;
+          border: 1px solid purple;
+      }
+      .blue {
+          background: lightblue;
+          border: 1px dotted navy;
+      }
+    </style>
+    </head>
+<body>
+<!-- Grid Options -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+    </div>
+</div>
+    <!-- Grid Nesting -->
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here
+                        <div class="row">
+                                <div class="col-lg-6 col-md-12 blue">One</div>
+                                <div class="col-lg-6 col-md-12 blue">Two</div>
+                            </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 pink"> Your Content Here</div>
+            </div>
+    </div>
+</div>
+</body>
+</html>
