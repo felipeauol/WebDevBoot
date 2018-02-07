@@ -17,6 +17,7 @@ body {
 
 h1 {
     color: whitesmoke;
+    text-align: center;
 }
 
 #stripe {
@@ -24,4 +25,8 @@ h1 {
     height: 30px;
     text-align: center;
     color: black
+}
+
+.selected {
+    background: blue;
 }

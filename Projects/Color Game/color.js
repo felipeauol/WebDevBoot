@@ -12,7 +12,11 @@ var squares = document.querySelectorAll(".square");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
+var easyBtn = document.querySelector("#easyBtn");
+var hardBtn = document.querySelector("#hardBtn");
 
+//Variable to track number of squares being displayed
+var numSquares = 6;
 
 //Set tile backgrounds to be colors in the array
 for(var i = 0; i < squares.length; i++){
@@ -40,7 +44,7 @@ for (let i = 0; i < squares.length; i++) {
     resetButton.addEventListener("click",
     function(){
     //Then new colors are generated        
-    colors = generateColorArray(6);
+    colors = generateColorArray(numSquares);
     //Then a new color is picked
     pickedColor = pickColor();
     //Then the picked color dispaly is changed
@@ -53,6 +57,45 @@ for (let i = 0; i < squares.length; i++) {
     h1.style.background = "#232323";
     }
 )
+
+//When I click the Easy mode button
+easyBtn.addEventListener("click",
+function () {
+    //Then the Easy button is selected
+    easyBtn.classList.add("selected");
+    //And the Hard button is unselected
+    hardBtn.classList.remove("selected");
+    //Then the game is reset with only 3 tiles
+    numSquares = 3;
+    colors = generateColorArray(numSquares);
+    pickedColor = pickColor();
+    displayColor.textContent = pickedColor;
+    for (let i = 0;i < squares.length;i++) {
+        if (colors[i]) {
+            squares[i].style.background = colors[i];        
+        } else {
+            squares[i].style.display = "none";    
+        }
+    }
+})
+
+//When I click the Hard mode button
+hardBtn.addEventListener("click",
+function () {
+    //Then the Easy button is unselected
+    easyBtn.classList.remove("selected");
+    //And the Hard button is selected
+    hardBtn.classList.add("selected");
+    //Then the game is reset with 6 tiles
+    numSquares = 6;
+    colors = generateColorArray(numSquares);
+    pickedColor = pickColor();
+    displayColor.textContent = pickedColor;
+    for (let i = 0;i < squares.length;i++) {
+        squares[i].style.background = colors[i];
+        squares[i].style.display = "block";
+    }
+})
 
 
 //Change tile colors
