@@ -10,8 +10,11 @@ displayColor.textContent = pickedColor;
 // Select other elements
 var squares = document.querySelectorAll(".square");
 var messageDisplay = document.querySelector("#message");
-var header = document.querySelector("#header");
+var h1 = document.querySelector("h1");
+var resetButton = document.querySelector("#reset");
 
+
+//Set tile backgrounds to be colors in the array
 for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
 }
@@ -20,12 +23,12 @@ for(var i = 0; i < squares.length; i++){
 for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener("click", 
     function(){
-        //Win case
+        //Right
         if (this.style.backgroundColor === pickedColor) {
             messageDisplay.textContent = "Correct!";
-            header.style.background = pickedColor;
+            h1.style.background = pickedColor;
             changeColors(pickedColor);
-        //Lose case
+        //Wrong
         } else{
             this.style.background = "#232323";
             messageDisplay.textContent = "Try Again"; 
@@ -33,8 +36,26 @@ for (let i = 0; i < squares.length; i++) {
     })
 }
 
-//Function to change tile colors
+//When I click the reset button
+    resetButton.addEventListener("click",
+    function(){
+    //Then new colors are generated        
+    colors = generateColorArray(6);
+    //Then a new color is picked
+    pickedColor = pickColor();
+    //Then the picked color dispaly is changed
+    displayColor.textContent = pickedColor;    
+    //Then the tile colors are reset
+    for(var i = 0; i < squares.length; i++){
+        squares[i].style.backgroundColor = colors[i];
+    }
+    //Then the h1 background is reset
+    h1.style.background = "#232323";
+    }
+)
 
+
+//Change tile colors
 function changeColors(color) {
     //loop through all tiles
     for(var i = 0; i < squares.length; i++){
@@ -43,7 +64,7 @@ function changeColors(color) {
     }
 }
 
-//Function to pick a random color from array
+//Pick a random color from array
 function pickColor() {
     //pick a random array index
     let random = Math.floor(Math.random() * colors.length)
@@ -51,20 +72,20 @@ function pickColor() {
     return colors[random];
 }
 
-//Function to generate an array of colors
+//Generate an array of colors
 function generateColorArray(n) {
-//create an array
+ //create an array
     var arr = [];
-//generate n rgb colors
+ //generate n rgb colors
     for (let i = 0; i < n; i++) {
         //add random color to array
         arr.push(randomColor());
     }
-//return array
+ //return array
     return arr;   
 }
 
-//Function to generate a random rgb color
+//Randomize rgb colors into an array
 function randomColor() {
     //generate a value for r
     let r = Math.floor(Math.random() * 256);
