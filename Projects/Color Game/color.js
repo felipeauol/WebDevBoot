@@ -30,6 +30,7 @@ for (let i = 0; i < squares.length; i++) {
         //Right
         if (this.style.backgroundColor === pickedColor) {
             messageDisplay.textContent = "Correct!";
+            resetButton.textContent = "Play Again!";
             h1.style.background = pickedColor;
             changeColors(pickedColor);
         //Wrong
@@ -47,8 +48,10 @@ for (let i = 0; i < squares.length; i++) {
     colors = generateColorArray(numSquares);
     //Then a new color is picked
     pickedColor = pickColor();
-    //Then the picked color dispaly is changed
-    displayColor.textContent = pickedColor;    
+    //Then the picked color display is changed
+    displayColor.textContent = pickedColor;
+    resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";    
     //Then the tile colors are reset
     for(var i = 0; i < squares.length; i++){
         squares[i].style.backgroundColor = colors[i];
