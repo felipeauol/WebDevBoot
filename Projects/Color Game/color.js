@@ -14,6 +14,7 @@ var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
 var easyBtn = document.querySelector("#easyBtn");
 var hardBtn = document.querySelector("#hardBtn");
+var modeButtons =  document.querySelectorAll(".mode");
 
 //Variable to track number of squares being displayed
 var numSquares = 6;
@@ -43,63 +44,21 @@ for (let i = 0; i < squares.length; i++) {
 
 //When I click the reset button
     resetButton.addEventListener("click",
+    //Then the game is reset
     function(){
-    //Then new colors are generated        
-    colors = generateColorArray(numSquares);
-    //Then a new color is picked
-    pickedColor = pickColor();
-    //Then the picked color display is changed
-    displayColor.textContent = pickedColor;
-    resetButton.textContent = "New Colors";
-    messageDisplay.textContent = "";    
-    //Then the tile colors are reset
-    for(var i = 0; i < squares.length; i++){
-        squares[i].style.backgroundColor = colors[i];
-    }
-    //Then the h1 background is reset
-    h1.style.background = "#232323";
+        reset()
     }
 )
 
-//When I click the Easy mode button
-easyBtn.addEventListener("click",
-function () {
-    //Then the Easy button is selected
-    easyBtn.classList.add("selected");
-    //And the Hard button is unselected
-    hardBtn.classList.remove("selected");
-    //Then the game is reset with only 3 tiles
-    numSquares = 3;
-    colors = generateColorArray(numSquares);
-    pickedColor = pickColor();
-    displayColor.textContent = pickedColor;
-    for (let i = 0;i < squares.length;i++) {
-        if (colors[i]) {
-            squares[i].style.background = colors[i];        
-        } else {
-            squares[i].style.display = "none";    
-        }
-    }
-})
-
-//When I click the Hard mode button
-hardBtn.addEventListener("click",
-function () {
-    //Then the Easy button is unselected
-    easyBtn.classList.remove("selected");
-    //And the Hard button is selected
-    hardBtn.classList.add("selected");
-    //Then the game is reset with 6 tiles
-    numSquares = 6;
-    colors = generateColorArray(numSquares);
-    pickedColor = pickColor();
-    displayColor.textContent = pickedColor;
-    for (let i = 0;i < squares.length;i++) {
-        squares[i].style.background = colors[i];
-        squares[i].style.display = "block";
-    }
-})
-
+for(let i = 0; i < modeButtons.length; i++) {
+    modeButtons[i].addEventListener("click", function(){
+        modeButtons[0].classList.remove("selected");
+        modeButtons[1].classList.remove("selected");
+        this.classList.add("selected");
+        this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+        reset();
+    })
+}
 
 //Change tile colors
 function changeColors(color) {
@@ -144,3 +103,26 @@ function randomColor() {
     //return color as string
     return color;
 }
+
+//Function to reset all states of the game
+function reset() {
+    //Then new colors are generated        
+    colors = generateColorArray(numSquares);
+    //Then a new color is picked
+    pickedColor = pickColor();
+    //Then the picked color display is changed
+    displayColor.textContent = pickedColor;
+    resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";    
+    //Then the tile colors are reset
+    for(var i = 0; i < squares.length; i++){
+        if(colors[i]){
+            squares[i].style.display = "block";
+            squares[i].style.backgroundColor = colors[i];
+        } else {
+            squares[i].style.display = "none";
+        }
+    }
+    //Then the h1 background is reset
+    h1.style.background = "#232323";
+    }
