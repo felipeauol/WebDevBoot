@@ -20,9 +20,8 @@ init();
     }
 )
 
-//Initialize the game
-function init() {
-
+//Set Mode buttons
+function setModes() {
     //Set up mode button listeners
     for(let i = 0; i < modeButtons.length; i++) {
         modeButtons[i].addEventListener("click", function(){
@@ -32,8 +31,11 @@ function init() {
             this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
             reset();
         })
-    }
+    }    
+}
 
+//Set tile listeners
+function setTiles() {
     //Add listeners for tiles
     for (let i = 0; i < squares.length; i++) {
         squares[i].addEventListener("click", 
@@ -51,6 +53,14 @@ function init() {
             }
         })
     }
+}
+
+//Initialize the game
+function init() {
+
+    setModes();
+
+    setTiles();
 
     //Set tile backgrounds to be colors in the array
     for(var i = 0; i < squares.length; i++){
@@ -113,7 +123,7 @@ function reset() {
     //Then the picked color display is changed
     displayColor.textContent = pickedColor;
     resetButton.textContent = "New Colors";
-    messageDisplay.textContent = "";    
+    messageDisplay.textContent = "";
     //Then the tile colors are reset
     for(var i = 0; i < squares.length; i++){
         if(colors[i]){
