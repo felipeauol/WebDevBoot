@@ -47,8 +47,12 @@ $("input[type='text']").keypress(function (event) {
     if (event.which === 13) {
         //Then the text within the box becomes a new todo
         new_todo = $(this).val();
-        $("ul").append('<li> <span>X </span> ' + new_todo + '</li>')
+        $("ul").append("<li><span><i class='fa fa-trash'></i></span> " + new_todo + '</li>')
         //And the box is reset
         $(this).val("");
     }
+})
+
+$(".fa-plus-square").on("click", function (){
+    $("input").slideToggle(150);
 })
