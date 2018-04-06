@@ -1,1 +1,13 @@
 <h1>Welcome! We have great tours for your visit to  <%= city %> </h1>
+<% if (city === "RIO"){ %>
+    <p>Great choice! But first, get a bulletproof vest :-)</p>
+<% } %>
+
+
+<% if( typeof repeat != 'undefined'){ %>
+<ul>
+<% for(var i = 0; i < repeat; i++){ %>
+     <ul><%= city %></ul>  
+<%} %>
+</ul>
+<% } %>
