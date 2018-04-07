@@ -1,0 +1,16 @@
+<% include templates/header %>
+
+<h1>Welcome to your friends page!</h1>
+
+<ul>
+<% friends.forEach(function(friend){ %>
+    <li> <%= friend %> </li>
+<% }) %>
+</ul>
+<br>
+<form action="/addfriend" method="POST">
+Friend's Name:<br>
+<input type="text" name="newfriend">
+<input type="submit" value="Add Friend">
+</form>
+<% include templates/footer %>
