@@ -1,40 +1,40 @@
 var express = require("express");
 var app = express();
 
-var request = require("request");
-var bodyParser = require('body-parser');
 
+var request = require("request");
+
+// Require body-parser to parse the body of the post request
+var parser = require("body-parser");
+// Configure parser to work
+app.use(parser.urlencoded({extended: true}))
+
+app.set("view engine", "EJS");
+
+var results;
 
 app.get("/", function(req, res){
     res.send("Welcome to the homepage");
 })
 
-var results;
+app.get("/search/", function(req, res){
+    res.render("search");
+})
 
-app.get("/search/:title", function(req, res){
-    var query = req.params.title;
+app.post("/results", function(req, res){
+    var query = req.body.title;
+
+    var searchdb = "http://www.omdbapi.com/?s=" + query + "&apikey=c4e4488b";
     
-    var search = "http://www.omdbapi.com/?t=" + query + "&apikey=c4e4488b";
-    console.log('search: ', search);
-    
-    request("search",function (err, resp, body) {
-        bod = bo.body;
-        console.log('body: ', bod);
+    request(searchdb,function (err, resp, body) {
         if (!err && res.statusCode == 200) {
             var results = JSON.parse(body);
-            console.log('results: ', results);
-            
-            res.redirect("/results");
+        
+            res.render("results", {results:results.Search});
         }
     });
 
 })
-
-app.post("/results",function (req, res){
-    res.send(results);
-})
-
-
 
 app.listen(3000,function () {    
     console.log("Serving your app on port 3000");
