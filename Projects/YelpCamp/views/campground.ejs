@@ -1,0 +1,16 @@
+<% include templates/header %>
+    <h1>Check out our campgrounds!</h1>
+
+    <div name="campgrounds">
+        <% if(campgrounds){ %>
+            <ul>
+                <% campgrounds.forEach(function(campground){ %>
+                    <li>
+                        <%= campground.name %> |
+                            <%= campground.img %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
+    </div>
+    <% include templates/footer %>
